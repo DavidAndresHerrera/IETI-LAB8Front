@@ -1,25 +1,42 @@
+import React, {Component} from 'react';
 import logo from './logo.svg';
+import DrawerComponent from "./DrawerComponent.js";
 import './App.css';
+import {Login} from "./Login.js"
+import {BrowserRouter as Router, Link, Route} from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component{
+
+    constructor(props) {
+        super(props);
+        localStorage.setItem('email',"davidandres");
+        localStorage.setItem('password',"123456");
+    }zz
+
+
+    render(){
+
+        const LoginView = () => (
+            <Login/>
+        );
+
+        const DrawerView = () => (
+            <DrawerComponent/>
+        );
+
+        return (
+            <Router>
+                <div className="App">
+                    {localStorage.getItem('IsLoggedIn') === "true"?
+                        <DrawerComponent/> : <Login/>}
+                </div>
+            </Router>
+
+
+        );
+    }
+
 }
 
 export default App;
