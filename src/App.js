@@ -23,13 +23,14 @@ class App extends Component{
 
         const DrawerView = () => (
             <DrawerComponent/>
+
         );
 
         return (
             <Router>
                 <div className="App">
                     {localStorage.getItem('IsLoggedIn') === "true"?
-                        <DrawerComponent/> : <Login/>}
+                        <Route exact path="/Draw" component={DrawerView}/> : <Route exact path="/" component={LoginView}/>}
                 </div>
             </Router>
 

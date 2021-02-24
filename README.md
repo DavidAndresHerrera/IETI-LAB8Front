@@ -10,7 +10,7 @@
 
 3. Create a navigation drawer component with mocked user data (https://material-ui.com/demos/drawers/)
 
-![](images/navigation-drawer.png)
+![](images/dataUser.png)
 
 4. Create the main view that display the tasks using card layouts (https://material-ui.com/demos/cards/). 
     This will be your model to represent a task:
@@ -27,13 +27,17 @@
 
 
 
-![](images/main.png)
+![](images/drawer.png)
 
 5. Learn about service workers and offline support: https://codelabs.developers.google.com/codelabs/offline/#0
 
 6. Use what you just learned to make your App work offline.
 
+![](images/PWA.png)
+
 7. Deploy your App to Heroku (https://dev.to/smithmanny/deploy-your-react-app-to-heroku-2b6f)
+
+> [![Deployed to Heroku](https://www.herokucdn.com/deploy/button.png)](https://boiling-bayou-78806.herokuapp.com/)
 
 8. Deploy your App as an Azure Webapp (https://devblogs.microsoft.com/premier-developer/deploying-react-apps-to-azure-with-azure-devops/)
 
