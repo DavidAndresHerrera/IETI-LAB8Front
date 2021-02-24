@@ -1,67 +1,40 @@
-# Getting Started with Create React App
+1. Create a new React JS project.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+    
+    npx create-react-app task-planner-app
+    
 
-## Available Scripts
+2. Create the Login.js component and the CSS if needed (use Material-UI library!)
 
-In the project directory, you can run:
+![](images/login.png)
 
-### `npm start`
+3. Create a navigation drawer component with mocked user data (https://material-ui.com/demos/drawers/)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![](images/navigation-drawer.png)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+4. Create the main view that display the tasks using card layouts (https://material-ui.com/demos/cards/). 
+    This will be your model to represent a task:
+  
+       {
+        "description": "some description text ",
+        "responsible": {
+            "name": "Santiago Carrillo",
+            "email": "sancarbar@gmail"
+        },
+        "status": "ready",
+        "dueDate": 156464645646
+    }
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+![](images/main.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+5. Learn about service workers and offline support: https://codelabs.developers.google.com/codelabs/offline/#0
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+6. Use what you just learned to make your App work offline.
 
-### `npm run eject`
+7. Deploy your App to Heroku (https://dev.to/smithmanny/deploy-your-react-app-to-heroku-2b6f)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+8. Deploy your App as an Azure Webapp (https://devblogs.microsoft.com/premier-developer/deploying-react-apps-to-azure-with-azure-devops/)
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+9. Submit your github repo along with the heroku and azure url of your solution!
