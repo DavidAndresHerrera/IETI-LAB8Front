@@ -1,17 +1,13 @@
-import React, {Component, useState} from "react";
+import React, {Component} from "react";
+import FormControl from "@material-ui/core/FormControl";
+import Input from "@material-ui/core/Input";
 
-import FormControl from '@material-ui/core/FormControl';
-import Input from '@material-ui/core/Input';
-
-
-import "./Login.css";
-
-export class  Login extends Component {
+export class  UserProfile extends Component {
 
 
     constructor(props) {
         super(props);
-        this.state = {email:"", password: ""};
+        this.state = {name:"",email:"", password: "", confirm:""};
         this.handleChangePassword = this.handleChangePassword.bind(this);
         this.handleChangeEmail = this.handleChangeEmail.bind(this);
 
@@ -25,9 +21,9 @@ export class  Login extends Component {
         const login = () => {
             if (localStorage.getItem('email') === this.state.email && localStorage.getItem('password') === this.state.password){
                 localStorage.setItem('IsLoggedIn', "true");
+                window.location.href = "/Draw";
+
             }
-            this.setState({email:"", password: ""});
-            window.location.reload();
         }
         const FormButton = props => (
             <div id="button" class="row">
@@ -43,7 +39,16 @@ export class  Login extends Component {
                 <div>
                     <form className="form">
                         <FormControl margin="normal" required fullWidth class="row input">
-                            <label >Ingrese su usuario</label>
+                            <label >Ingrese su nombre</label>
+                            <Input
+                                id="name"
+                                name="name"
+                                autoComplete="name"
+                                autoFocus
+                            />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth class="row input">
+                            <label >Ingrese su correo</label>
                             <Input
                                 id="email"
                                 name="email"
@@ -60,6 +65,15 @@ export class  Login extends Component {
                                 id="password"
                                 autoComplete="current-password"
                                 onChange={this.handleChangePassword}
+                            />
+                        </FormControl>
+                        <FormControl margin="normal" required fullWidth class="row">
+                            <label >Confirme su contraseña</label>
+                            <Input
+                                name="confirm"
+                                type="confirm"
+                                id="confirm"
+                                autoComplete="current-password"
                             />
                         </FormControl>
                     </form>
@@ -83,7 +97,3 @@ export class  Login extends Component {
 
 
 }
-
-
-
-

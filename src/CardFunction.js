@@ -56,27 +56,25 @@ class CardFunction extends Component{
     render() {
 
         const {classes} = this.props;
-        const bull = <span className={classes.bullet}>•</span>;
-        const date = new Date().getDate()+"/"+ new Date().getMonth() +"/"+ new Date().getFullYear();
-
         return (
             <Card className={classes.root}>
                 <CardContent>
-                    {this.props.estado==="In progress" && <Typography className={classes.titleCardGreen} color="textPrimary" gutterBottom>{this.props.titulo}</Typography>}
-                    {this.props.estado==="Ready" && <Typography className={classes.titleCardBlack} color="textPrimary" gutterBottom>{this.props.titulo}</Typography>}
-                    {this.props.estado==="Completed" && <Typography className={classes.titleCardRed} color="textPrimary" gutterBottom>{this.props.titulo}</Typography>}
+
+                    {this.props.info.status==="in progress" && <Typography className={classes.titleCardGreen} color="textPrimary" gutterBottom>{this.props.info.description}</Typography>}
+                    {this.props.info.status==="ready" && <Typography className={classes.titleCardBlack} color="textPrimary" gutterBottom>{this.props.info.description}</Typography>}
+                    {this.props.info.status==="done" && <Typography className={classes.titleCardRed} color="textPrimary" gutterBottom>{this.props.info.description}</Typography>}
                     <br></br>
                     <Typography variant="h7" component="h5" >
-                        Santiago Carrillo
+                        {this.props.info.responsible.name}
                     </Typography>
                     <Typography variant="h7" component="h5" >
-                        sancarbar@gmail.com
+                        {this.props.info.responsible.email}
                     </Typography>
                     <Typography variant="h7" component="h4">
-                        {this.props.estado}
+                        {this.props.info.status}
                     </Typography>
                     <Typography variant="h7" component="h5">
-                        {date}
+                        {new Date(this.props.info.dueDate).toDateString()}
                     </Typography>
                 </CardContent>
             </Card>

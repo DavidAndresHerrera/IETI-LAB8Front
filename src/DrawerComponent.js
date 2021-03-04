@@ -1,6 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -15,16 +16,23 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
-import Card from '@material-ui/core/Card';
-import CardHeader from "@material-ui/core/CardHeader";
 import Avatar from "@material-ui/core/Avatar";
-import CardFunction from "./CardFunction.js";
+import CardFunction from "./CardFunction";
+import {NewTask} from "./NewTask";
+import Filter from "./Filter";
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import AddIcon from "@material-ui/icons/Add";
+import Fab from "@material-ui/core/Fab";
+
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = theme => ({
     root: {
         display: 'flex',
     },
@@ -94,95 +102,156 @@ const useStyles = makeStyles((theme) => ({
         margin: "auto"
     }
 
-}));
+});
 
-export default function DrawerComponent() {
-    const classes = useStyles();
-    const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
-
-
-    return (
-        <div className={classes.root}>
-            <CssBaseline />
-            <AppBar
-                position="fixed"
-                className={clsx(classes.appBar, {
-                    [classes.appBarShift]: open,
-                })}
-            >
-                <Toolbar>
-                    <IconButton
-                        color="inherit"
-                        aria-label="open drawer"
-                        onClick={handleDrawerOpen}
-                        edge="start"
-                        className={clsx(classes.menuButton, open && classes.hide)}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography variant="h6" noWrap>
-                        ¿Que estas buscando?
-                    </Typography>
-                </Toolbar>
-            </AppBar>
-            <Drawer
-                className={classes.drawer}
-                variant="persistent"
-                anchor="left"
-                open={open}
-                classes={{
-                    paper: classes.drawerPaper,
-                }}
-            >
-                <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerClose}>
-                        {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-                    </IconButton>
-                </div>
-                <Divider />
-                <List>
-                    <ListItem>
-                        <ListItemIcon>{
-                            <Avatar aria-label="recipe" className={classes.avatar} >D</Avatar>
-                        }</ListItemIcon>
-                        <ListItemText primary={"David Herrera"} secondary={"davidandres@gmail.com"} />
-                    </ListItem>
-                </List>
-                <Divider />
-            </Drawer>
-            <main
-                className={clsx(classes.content, {
-                    [classes.contentShift]: open,
-                })}
-            >
-
-                <div align="left"  >
-                    <br/>
-                    <br/>
-                    <br/>
-                    <Divider/>
-                    <CardFunction titulo={'Implement Login View'} estado={'In progress'}/>
-                    <br/>
-                    <Divider/>
-                    <CardFunction titulo={'Implement Login Controller'} estado={'Ready'}/>
-                    <br/>
-                    <Divider/>
-                    <CardFunction titulo={'Facebook Integration'} estado={'Completed'}/>
-                    <br/>
-                    <Divider/>
-                </div>
-
-
-            </main>
-        </div>
-    );
+function setTask (result){
+    console.log(this.state.tasks);
+    this.setState({tasks: this.state.tasks.concat(result)});
+    console.log(result, "asdfasfsadfsdfsadfsadfsadfasdfsadfsadfsadfasdfasdf");
 }
+
+class DrawerComponent extends React.Component{
+
+    state = {
+        open: false,
+        tasks: [
+            {
+                "description": "Implement Login View ",
+                "responsible": {
+                    "name": "Santiago Carrillo",
+                    "email": "sancarbar@gmail"
+                },
+                "status": "ready",
+                "dueDate": 156464645646
+            },
+            {
+                "description": "Implement Login View ",
+                "responsible": {
+                    "name": "Santiago Carrillo",
+                    "email": "sancarbar@gmail"
+                },
+                "status": "in progress",
+                "dueDate": 156464645646
+            },
+            {
+                "description": "Implement Login View ",
+                "responsible": {
+                    "name": "Santiago Carrillo",
+                    "email": "sancarbar@gmail"
+                },
+                "status": "done",
+                "dueDate": 156464645646
+            },
+        ]
+    };
+
+    handleDrawerOpen = () => {
+        this.setState({open: true});
+    };
+
+    handleDrawerClose = () => {
+        this.setState({open: false});
+    };
+
+
+
+    render(){
+        console.log(this.props.info, "-------------------------");
+        const classes = this.props;
+        const theme = this.props;
+        const {open} = this.state;
+        return (
+            <Router>
+
+                <div className={classes.root}>
+
+                    <CssBaseline />
+                    <AppBar
+                        position="fixed"
+                        className={clsx(classes.appBar, {
+                            [classes.appBarShift]: open,
+                        })}
+                    >
+                        <Toolbar>
+                            <IconButton
+                                color="inherit"
+                                aria-label="open drawer"
+                                onClick={this.handleDrawerOpen}
+                                edge="start"
+                                className={clsx(classes.menuButton, open && classes.hide)}
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Typography variant="h6" noWrap>
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                    <Drawer
+                        className={classes.drawer}
+                        variant="persistent"
+                        anchor="left"
+                        open={open}
+                        classes={{
+                            paper: classes.drawerPaper,
+                        }}
+                    >
+                        <div className={classes.drawerHeader}>
+                            <IconButton onClick={this.handleDrawerClose}>
+                                {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+                            </IconButton>
+                        </div>
+                        <Divider />
+                        <List>
+                            <ListItem>
+                                <ListItemIcon>{
+                                    <Avatar aria-label="recipe" className={classes.avatar} >D</Avatar>
+                                }</ListItemIcon>
+                                <ListItemText primary={this.props.info.nombre} secondary={this.props.info.correo} />
+                            </ListItem>
+                        </List>
+                        <Divider />
+                    </Drawer>
+                    <main
+                        className={clsx(classes.content, {
+                            [classes.contentShift]: open,
+                        })}
+                    >
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <div align="center">
+                            <Filter/>
+                        </div>
+                        <div align="left"  >
+                            { this.state.tasks.map( task => {
+                                return(<CardFunction  info={task}/>);
+                            })}
+                        </div>
+                        <Link to="/Add">
+                            <Fab color="priinherit" aria-label="add" >
+                                <AddIcon />
+                            </Fab>
+                        </Link>
+                        <Switch>
+                            <Route exact path="/Add">
+                                <NewTask/>
+                            </Route>
+
+                        </Switch>
+
+                    </main>
+                </div>
+            </Router>
+
+        );
+
+    }
+
+}
+DrawerComponent.propTypes = {
+    classes: PropTypes.object.isRequired,
+    theme: PropTypes.object.isRequired,
+};
+
+export default withStyles(useStyles, {withTheme: true})(DrawerComponent);
