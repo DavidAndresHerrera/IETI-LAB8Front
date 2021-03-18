@@ -14,8 +14,12 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Date() {
+
+
+export default function Date({change}) {
     const classes = useStyles();
+
+
 
     return (
         <form className={classes.container} noValidate>
@@ -29,6 +33,7 @@ export default function Date() {
                     shrink: true,
                 }}
             />
+
         </form>
     );
 }

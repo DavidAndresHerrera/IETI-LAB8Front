@@ -14,16 +14,28 @@ import {Link, Route, Switch} from "react-router-dom";
 const Transition = React.forwardRef(function Transition(props, ref) {
     return <Slide direction="up" ref={ref} {...props} />;
 });
+{/*
+{
+                "description": "Implement Login View ",
+                "responsible": {
+                    "name": "Santiago Carrillo",
+                    "email": "sancarbar@gmail"
+                },
+                "status": "ready",
+                "dueDate": 156464645646
+            }*/}
+
 
 
 export class NewTask extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {descrip:"", respon:"", status:""}
+        this.state = {descrip:"", respon:"", status:"", date:""}
         this.handleChangeDescrip = this.handleChangeDescrip.bind(this);
         this.handleChangeRespon = this.handleChangeRespon.bind(this);
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
+        this.handleChangeDate = this.handleChangeDate.bind(this);
 
     }
 
@@ -103,7 +115,7 @@ export class NewTask extends Component {
                                 />
                             </FormControl>
                                 <FormControl margin="normal" required fullWidth >
-                                    <Date/>
+                                    <Date changeDate={this.handleChangeDate}/>
                                 </FormControl>
                                 <FormControl margin="normal" required fullWidth >
                                     <Link to="/Draw">
@@ -131,5 +143,9 @@ export class NewTask extends Component {
     }
     handleChangeStatus(e){
         this.setState({status : e.target.value});
+    }
+    handleChangeDate(e){
+        console.log("Fecha");
+        this.setState({date : e.target.value});
     }
 }
