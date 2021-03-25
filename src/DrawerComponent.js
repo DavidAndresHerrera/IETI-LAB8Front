@@ -114,34 +114,7 @@ class DrawerComponent extends React.Component{
 
     state = {
         open: false,
-        tasks: [
-            {
-                "description": "Implement Login View ",
-                "responsible": {
-                    "name": "Santiago Carrillo",
-                    "email": "sancarbar@gmail"
-                },
-                "status": "ready",
-                "dueDate": 156464645646
-            },
-            {
-                "description": "Implement Login View ",
-                "responsible": {
-                    "name": "Santiago Carrillo",
-                    "email": "sancarbar@gmail"
-                },
-                "status": "in progress",
-                "dueDate": 156464645646
-            },
-            {
-                "description": "Implement Login View ",
-                "responsible": {
-                    "name": "Santiago Carrillo",
-                    "email": "sancarbar@gmail"
-                },
-                "status": "done",
-                "dueDate": 156464645646
-            },
+        tasks: [ 
         ]
     };
 

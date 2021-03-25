@@ -2,7 +2,7 @@ import React, {Component, useState} from "react";
 
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
-
+import axios from 'axios';
 
 import "./Login.css";
 
@@ -23,11 +23,21 @@ export class  Login extends Component {
             <h2 id="headerTitle">{props.title}</h2>
         );
         const login = () => {
-            if (localStorage.getItem('email') === this.state.email && localStorage.getItem('password') === this.state.password){
-                localStorage.setItem('IsLoggedIn', "true");
-            }
-            this.setState({email:"", password: ""});
-            window.location.reload();
+            axios.post('http://localhost:8080/user/login', {
+             username: this.state.email,
+             password: this.state.password
+         })
+             .then(function (response) {
+                 localStorage.setItem("IsLoggedIn","true");
+                 localStorage.setItem("token","Bearer "+response.data.accessToken);
+                 
+                 window.location.reload();
+             })
+             .catch(function (error) {
+                 console.log(error);
+                 alert("No se pudo entrar, verifique su contraseña o email");
+             });
+             
         }
         const FormButton = props => (
             <div id="button" class="row">
